@@ -12,6 +12,7 @@ export class CoursesComponent implements OnInit {
     console.log("Funciono");
     this.courses = COURSES; 
     console.log(COURSES);
+    
 }
 
   courses: Course[] = COURSES;
@@ -26,8 +27,16 @@ export class CoursesComponent implements OnInit {
   }
   this.courses.push(nuevoCurso);
   }
-
+  newCourseForm(){
+    let newCourse: Course;
+    newCourse = (JSON.parse(localStorage.getItem('course')));
+    Number(newCourse.id);
+    Number(newCourse.lessonsCount);
+    console.log(newCourse);
+    this.courses.push(newCourse);
+  }
   ngOnInit(): void {
+    this.newCourseForm();
   }
 
 }
